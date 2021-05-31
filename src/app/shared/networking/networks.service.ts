@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpErrorResponse, HttpRequest, HttpResponse,} from "@angular/common/http";
+import {HttpClient, HttpErrorResponse, } from "@angular/common/http";
 // import {Http, Headers, RequestMethod, RequestOptions, Response} from '@angular/http'
-import {catchError, map,} from "rxjs/operators";
-import {pipe, throwError} from "rxjs";
+import {catchError,} from "rxjs/operators";
+import { throwError} from "rxjs";
 
 import {environment} from "../../../environments/environment";
-import {AuthService} from "../authentications/auth.service";
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +12,7 @@ import {AuthService} from "../authentications/auth.service";
 export class NetworksService {
 
   private baseUrl = environment.apiUrl;
-  constructor(private http: HttpClient, private auth: AuthService) { }
+  constructor(private http: HttpClient, ) { }
 
   get = (medium: any) => {
     const getOptions = {
@@ -26,24 +25,18 @@ export class NetworksService {
       //   catchError(this.handleError)
   }
 
-  posting = (data: any) => {
-
+  postData = (data: any) => {
+  console.log('posting here');
     // response:
     // option: {
     //   response: 'response'
     // }
     // this.mediaItems.push(mediaItem);
-    let response = this.http.post(`${this.baseUrl}/login`, {email: 'samyush@email.com', password: '123123'}, )
-      .pipe(pipe(map((valueIs : any) => {
-        return valueIs;
-      })) ,catchError(this.handleError));
-    if(response != null ){
-      console.log(response);
-      return response;
-    }
-    else
-      console.log(response);
-      return 'Error';
+    return this.http.post( environment.apiUrl + '/api/login', data, );
+      // .pipe(pipe(map((valueIs : any) => {
+      //   return valueIs;
+      // })) ,catchError(this.handleError));
+
   }
 
   delete = (data: any) => {

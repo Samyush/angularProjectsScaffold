@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { LoginPageComponent } from './components/login-page/login-page.component';
 import {HttpClientModule} from "@angular/common/http";
 import { HomePageComponent } from './components/home-page/home-page.component';
+import {NetworksService} from "./shared/networking/networks.service";
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -16,9 +18,10 @@ import { HomePageComponent } from './components/home-page/home-page.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [NetworksService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
