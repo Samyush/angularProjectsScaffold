@@ -27,11 +27,6 @@ export class NetworksService {
 
   postData = (data: any) => {
   console.log('posting here');
-    // response:
-    // option: {
-    //   response: 'response'
-    // }
-    // this.mediaItems.push(mediaItem);
     return this.http.post( environment.apiUrl + '/api/login', data, );
       // .pipe(pipe(map((valueIs : any) => {
       //   return valueIs;
